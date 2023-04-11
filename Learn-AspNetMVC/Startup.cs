@@ -1,6 +1,8 @@
+using Learn_AspNetMVC.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +26,14 @@ namespace Learn_AspNetMVC
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllersWithViews();
+			services.Configure<RazorViewEngineOptions>(options =>
+			{
+				// {0} Ten Action
+				// {1} Ten Controller
+				// {2} Ten Area
+				options.ViewLocationFormats.Add("/MyView/{1}/{0}"+RazorViewEngine.ViewExtension );
+			});
+			services.AddSingleton(typeof(ProductService), typeof(ProductService));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
