@@ -21,4 +21,6 @@
 ## Truyen du lieu tu Controller sang View:
 - Su dung View()	
 - ViewData:
-- ViewBag:
+- ViewBag: Doi tuong dynamic
+## Truyen du lieu tu trang nay sang trang khac:
+- TempData: Su dung section he thong de luu du lieu va trang khac co the doc duoc du lieu nay. Khi doc ra lan dau tien thi du lieu duoc xoa luon.
