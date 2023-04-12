@@ -19,13 +19,17 @@ namespace Learn_AspNetMVC.Controllers
 		{
 			return View();
 		}
-		public IActionResult ViewProduct(int? id)
+		[TempData]
+		public string StatusMessage { get; set; }
+
+        public IActionResult ViewProduct(int? id)
 		{
 			var product = _productService.Where(p=>p.Id == id).FirstOrDefault();
 			if(product== null)
 			{
-				TempData["StatusMessage"] = "San pham ban yeu cau khong co";
-				return Redirect(Url.Action("Index", "Home"));
+				//TempData["StatusMessage"] = "San pham ban yeu cau khong co";
+				StatusMessage = "San pham ban yeu cau khong co";
+                return Redirect(Url.Action("Index", "Home"));
 			}
 			//return View(product);
 			//-ViewData
