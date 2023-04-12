@@ -1,6 +1,7 @@
 ﻿using Learn_AspNetMVC.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Linq;
 
 namespace Learn_AspNetMVC.Controllers
@@ -23,11 +24,18 @@ namespace Learn_AspNetMVC.Controllers
 			var product = _productService.Where(p=>p.Id == id).FirstOrDefault();
 			if(product== null)
 			{
-				return NotFound();
+				TempData["StatusMessage"] = "San pham ban yeu cau khong co";
+				return Redirect(Url.Action("Index", "Home"));
 			}
 			//return View(product);
-			this.ViewData["product"] =product;
-			return View("ViewProduct2");
+			//-ViewData
+			//this.ViewData["product"] =product;
+			//return View("ViewProduct2");
+			//-ViewBag
+			ViewBag.product = product;
+			return View("ViewProduct3");
 		}
-	}
+
+
+    }
 }
