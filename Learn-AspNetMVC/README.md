@@ -27,3 +27,9 @@
 - Su dung:
 	+ TemData["Key"]= "Value";
 	+ Xay dung Key la property co chi thi [TempData] o tren dau
+
+## Route
+### StatusCodePagesMiddleware
+- Tao phuong thuc mo rong xu ly cac error tu 400-599
+### Anh xa Url vao Controller
+- 

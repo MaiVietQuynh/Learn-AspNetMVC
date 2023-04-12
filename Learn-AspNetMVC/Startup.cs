@@ -1,3 +1,4 @@
+using Learn_AspNetMVC.ExtendMethods;
 using Learn_AspNetMVC.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -51,6 +52,7 @@ namespace Learn_AspNetMVC
 			}
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
+			app.AddStatusCodePage(); //Tuy bien khi co loi tu 400-599
 
 			app.UseRouting();
 
@@ -58,10 +60,25 @@ namespace Learn_AspNetMVC
 
 			app.UseEndpoints(endpoints =>
 			{
+				//endpoints.MapControllerRoute(
+				//	name: "default",
+				//	pattern: "{controller=Home}/{action=Index}/{id?}");
+				//endpoints.MapControllers();
+				//endpoints.MapControllerRoute();
+				//endpoints.MapDefaultControllerRoute();
+				//endpoints.MapAreaControllerRoute();
 				endpoints.MapControllerRoute(
-					name: "default",
-					pattern: "{controller=Home}/{action=Index}/{id?}");
-			});
+					name: "firstroute",
+					pattern: "start-here/{controller}/{action}/{id?}"
+					//defaut: controller, action, area
+					//defaults: new
+					//{
+					//	//controller = "First",
+					//	//action = "ViewProduct",
+					//	//id = 3
+					//}
+				);
+            });
 		}
 	}
 }
