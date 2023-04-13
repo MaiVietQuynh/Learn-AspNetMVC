@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.AspNetCore.Routing.Constraints;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -35,6 +36,7 @@ namespace Learn_AspNetMVC
 				options.ViewLocationFormats.Add("/MyView/{1}/{0}"+RazorViewEngine.ViewExtension );
 			});
 			services.AddSingleton(typeof(ProductService), typeof(ProductService));
+			services.AddSingleton<PlanetService>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,9 +69,26 @@ namespace Learn_AspNetMVC
 				//endpoints.MapControllerRoute();
 				//endpoints.MapDefaultControllerRoute();
 				//endpoints.MapAreaControllerRoute();
+
+				endpoints.MapControllerRoute(
+					name: "first",
+					//ksdksd/3
+					//Home/3
+					pattern: "{url:regex(^((xemsanpham)||(viewproduct))$)}/{id:range(2,4)}",
+					defaults: new
+					{
+						controller = "First",
+						action = "ViewProduct"
+					}
+					//constraints: new
+					//{
+					//	//url=new RegexRouteConstraint(@"^((xemsanpham)||(viewproduct))$"),
+					//	//id=new RangeRouteConstraint(2,4)
+					//}
+					);
 				endpoints.MapControllerRoute(
 					name: "firstroute",
-					pattern: "start-here/{controller}/{action}/{id?}"
+					pattern: "{controller=Home}/{action=Index}/{id?}"
 					//defaut: controller, action, area
 					//defaults: new
 					//{
