@@ -86,6 +86,11 @@ namespace Learn_AspNetMVC
 					//	//id=new RangeRouteConstraint(2,4)
 					//}
 					);
+				endpoints.MapAreaControllerRoute(
+					name: "firstroute",
+					pattern: "{controller}/{action=Index}/{id?}",
+					areaName: "ProductManage"
+					);
 				endpoints.MapControllerRoute(
 					name: "firstroute",
 					pattern: "{controller=Home}/{action=Index}/{id?}"

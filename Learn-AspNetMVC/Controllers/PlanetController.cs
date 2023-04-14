@@ -5,6 +5,7 @@ using System.Linq;
 
 namespace Learn_AspNetMVC.Controllers
 {
+	[Route("he-mat-troi")]
     public class PlanetController : Controller
     {
         private readonly PlanetService _planetService;
@@ -14,8 +15,8 @@ namespace Learn_AspNetMVC.Controllers
             _planetService = planetService;
             _logger = logger;
         }
-
-        public IActionResult Index()
+		[Route("danh-sach-cac-hanh-tinh.html")]
+		public IActionResult Index()
         {
             return View();
         }
@@ -57,11 +58,15 @@ namespace Learn_AspNetMVC.Controllers
 			var planet = _planetService.Where(p => p.Name == Name).FirstOrDefault();
 			return View("Detail", planet);
 		}
+		[Route("sao/[action]",Order =1,Name ="Saturn1")] // ../sao/Saturn
+		[Route("sao/[controller]/[action]", Order = 2)] // ../sao/Planet/Saturn
+		[Route("[controller]-[action].html", Order = 3)] // ../sao/Saturn
 		public IActionResult Saturn()
 		{
 			var planet = _planetService.Where(p => p.Name == Name).FirstOrDefault();
 			return View("Detail", planet);
 		}
+		[Route("hanhtinh/{id:int}")]
 		public IActionResult PlanetInfo(int id)
 		{
 			var planet = _planetService.Where(p => p.Id == id).FirstOrDefault();
