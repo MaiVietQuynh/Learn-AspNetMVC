@@ -15,6 +15,7 @@ namespace Learn_AspNetMVC.Controllers
 			_logger= logger;
 			_productService= productService;
 		}
+		
 		public IActionResult Index()
 		{
 			return View();
