@@ -42,3 +42,14 @@
 - Thiet lap Area cho Controller bang [Area("Area Name")]
 - Su dung endpoint.MapAreaControllerRoute() de anh xa Url vao Controller
 - View luu tru o: Areas/Area-Name/Views/Controller-Name/Action.cshtml
+### Phat sinh duong dan Url
+- Url.Action()
+- Url.ActionLink()
+- Url.RouteUrl()
+- Url.Link()
+- <a> <form> <button>
+	+ asp-area = ""
+	+ asp-action= ""
+	+ asp-route-...=""
+	+ asp-controller=""
+	+ asp-route="default"

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Linq;
 
-namespace Learn_AspNetMVC.Controllers
+namespace Learn_AspNetMVC.Areas.Controllers
 {
 	[Area("ProductManage")]
 	public class ProductController : Controller

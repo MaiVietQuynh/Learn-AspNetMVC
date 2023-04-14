@@ -6,3 +6,28 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<p>
+    @Url.ActionLink()
+</p>
+
+<p>
+    @Url.Action()
+</p>
+
+
+<p>
+    @Url.Action("Privacy")
+</p>
+
+
+<p>
+    @Url.Action("Privacy", new{id=123,name="mai"})
+</p>
+<p>
+    @Url.Action("Jupiter", "Planet")
+</p>
+<p>
+    @Url.Action("Index","Product", new{area="ProductManage"})
+</p>
+
