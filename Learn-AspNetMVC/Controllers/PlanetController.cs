@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Learn_AspNetMVC.Controllers
 {
-	[Route("he-mat-troi")]
+	[Route("he-mat-troi[action]")]
     public class PlanetController : Controller
     {
         private readonly PlanetService _planetService;
