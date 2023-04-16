@@ -1,10 +1,12 @@
 using Learn_AspNetMVC.ExtendMethods;
+using Learn_AspNetMVC.Models;
 using Learn_AspNetMVC.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Routing.Constraints;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,6 +29,10 @@ namespace Learn_AspNetMVC
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddDbContext<AppDbContext>(options =>
+			{
+				options.UseSqlServer(Configuration.GetConnectionString("AppDbContext"));
+			});
 			services.AddControllersWithViews();
 			services.Configure<RazorViewEngineOptions>(options =>
 			{
