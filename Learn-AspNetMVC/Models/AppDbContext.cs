@@ -4,10 +4,11 @@ using System.Reflection.Emit;
 using System.Threading.Tasks;
 using System;
 using Microsoft.EntityFrameworkCore;
+using Learn_AspNetMVC.Models.Contacts;
 
 namespace Learn_AspNetMVC.Models
 {
-	public class AppDbContext : DbContext
+    public class AppDbContext : DbContext
 	{
 
 		public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
@@ -30,5 +31,6 @@ namespace Learn_AspNetMVC.Models
 			//	}
 			//}
 		}
+		public DbSet<ContactModel> Contacts { get; set; }
 	}
 }
