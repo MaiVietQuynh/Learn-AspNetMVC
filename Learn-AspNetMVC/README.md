@@ -53,3 +53,6 @@
 	+ asp-route-...=""
 	+ asp-controller=""
 	+ asp-route="default"
+## ModelBinding
+- Khi muon Binding thuoc tinh chi tiet nao thi su dung Bind(..,..,...) ModelName model
+- 
