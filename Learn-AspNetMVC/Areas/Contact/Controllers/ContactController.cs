@@ -9,10 +9,12 @@ using Learn_AspNetMVC.Models;
 using Learn_AspNetMVC.Models.Contacts;
 using Microsoft.VisualStudio.Web.CodeGeneration.CommandLine;
 using Microsoft.AspNetCore.Authorization;
+using Learn_AspNetMVC.Data;
 
 namespace Learn_AspNetMVC.Areas.Contact.Controllers
 {
     [Area("Contact")]
+    [Authorize(Roles = RoleName.Administrator)]
     public class ContactController : Controller
     {
         private readonly AppDbContext _context;
