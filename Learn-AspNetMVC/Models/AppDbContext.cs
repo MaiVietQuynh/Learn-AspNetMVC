@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 using System;
 using Microsoft.EntityFrameworkCore;
 using Learn_AspNetMVC.Models.Contacts;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Learn_AspNetMVC.Models
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext :  IdentityDbContext<AppUser>
 	{
 
 		public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
@@ -22,14 +23,14 @@ namespace Learn_AspNetMVC.Models
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);
-			//foreach (var entityType in modelBuilder.Model.GetEntityTypes())
-			//{
-			//	var tableName = entityType.GetTableName();
-			//	if (tableName.StartsWith("AspNet"))
-			//	{
-			//		entityType.SetTableName(tableName.Substring(6));
-			//	}
-			//}
+			foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+			{
+				var tableName = entityType.GetTableName();
+				if (tableName.StartsWith("AspNet"))
+				{
+					entityType.SetTableName(tableName.Substring(6));
+				}
+			}
 		}
 		public DbSet<ContactModel> Contacts { get; set; }
 	}
